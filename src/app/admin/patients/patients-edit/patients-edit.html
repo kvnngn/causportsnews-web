@@ -1,0 +1,77 @@
+<div class="ui segment">
+    <h1 class="title1">Fiche de {{lastname + ' ' + firstname}}
+        <button class="ui button green inverted right floated" (click)="update()">Mettre à jour</button>
+        <a routerLinkActive="active" [routerLink]="['/admin/patients']">
+            <button class="ui button red inverted right floated">Retourner à la liste des patients</button>
+        </a>
+    </h1>
+
+    <div class="ui stackable grid two column">
+        <div class="column ui form">
+            <h4 class="ui header">
+                Informations de connexion
+            </h4>
+
+            <div class="field">
+                <label>E-mail : </label>
+                <input type="text" [(ngModel)]="patient.email" placeholder="E-mail">
+            </div>
+            <div class="field">
+                <label>Envoyer un nouveau mot de passe par mail </label>
+                <button class="ui button" (click)="resetPassword()">Réinitialiser le mot de passe</button>
+            </div>
+        </div>
+        <div class="column ui form">
+            <div class="block min-height">
+                <h4 class="ui header">
+                    Informations personnelles
+                </h4>
+                <div class="field">
+                    <label class="block-label">Civilité : </label>
+                    <select [(ngModel)]="patient.civ" placeholder="Civilité">
+                        <option value="M">M</option>
+                        <option value="Mme">F</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label class="block-label">Nom : </label>
+                    <input type="text" [(ngModel)]="patient.lastname" placeholder="Nom">
+                </div>
+                <div class="field">
+                    <label class="block-label">Prénom : </label>
+                    <input type="text" [(ngModel)]="patient.firstname" placeholder="Prénom">
+                </div>
+                <div class="field">
+                    <label class="block-label">Année de naissance : </label>
+                    <input type="text" [(ngModel)]="patient.birthdate" placeholder="Année">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui segment" class="card hidden-xs">
+    <div class="header text-center">
+        <h4 class="title">Rapports concernant le patient</h4>
+        <button class="ui button green inverted right floated" routerLinkActive="active" [routerLink]="['/admin/reports/new']">
+            <i class="fas fa-folder-plus"></i>Créer un rapport Mandareen
+        </button>
+    </div>
+
+    <div class="content table-responsive table-full-width">
+        <table class="table" *ngIf="reports.length > 0">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Contenu</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let report of reports">
+                <td> {{report.creation_date | date: 'dd/MM/yy'}}</td>
+                <td>{{ report.content }}</td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

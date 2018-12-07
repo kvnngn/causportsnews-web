@@ -1,0 +1,168 @@
+<authnavbar-cmp></authnavbar-cmp>
+<div class="wrapper wrapper-full-page">
+    <div class="full-page register-page" data-color="azure">
+        <div class="content">
+            <div class="container">
+                <div class="ui stackable grid two column">
+                    <div class="column">
+                        <div class="ui segments">
+                            <div class="ui segment">
+                                <h3 class="ui header">Entrez dans la communauté <b>Mandareen</b> !</h3>
+                            </div>
+
+                            <div class="ui segment offres">
+                                <h3 class="ui header">Découvrez nos offres</h3>
+                                <p>Ce contenu sera bientôt disponible</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <form [formGroup]="RegisterForm" (ngSubmit)="register(RegisterForm.value)" novalidate
+                              class="ui form">
+                            <div class="ui segments">
+                                <div class="ui segment">
+                                    <h3 class="ui header">
+                                        <img src="../../../assets/img/Mandareen-logo.png" width="20%">
+                                        <div class="content">Je m'inscris sur Mandareen Pro</div>
+                                    </h3>
+                                </div>
+                                <div class="ui segment">
+                                    <div class="form-group">
+                                        <select class="form-control"
+                                                name="civility"
+                                                placeholder="Civilité"
+                                                [formControl]="RegisterForm.controls['civility']">
+                                            <option value="M">Monsieur</option>
+                                            <option value="F">Madame</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group"
+                                         [ngClass]="{'has-error':!firstname.valid && firstname.touched}">
+                                        <input type="text"
+                                               name="firstname"
+                                               class="form-control"
+                                               placeholder="Prénom"
+                                               [formControl]="RegisterForm.controls['firstname']"/>
+                                        <div *ngIf="firstname.invalid && firstname.touched"
+                                             class="help-block">
+                                            Quel est votre prénom ?
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group"
+                                         [ngClass]="{ 'has-error': !lastname.valid && lastname.touched}">
+                                        <input type="text"
+                                               class="form-control"
+                                               name="lastname"
+                                               placeholder="Nom"
+                                               [formControl]="RegisterForm.controls['lastname']"/>
+                                        <div *ngIf="lastname.invalid && lastname.touched"
+                                             class="help-block">
+                                            Quel est votre nom de famille ?
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group"
+                                         [ngClass]="{ 'has-error': !adeli.valid && adeli.touched}">
+                                        <input type="tel"
+                                               class="form-control"
+                                               name="adeli"
+                                               placeholder="N° ADELI"
+                                               [formControl]="RegisterForm.controls['adeli']">
+                                        <div *ngIf="adeli.invalid && adeli.touched" class="help-block">
+                                            Votre n°ADELI doit avoir 9 chiffres, 11 si c'est un n°RPPS
+                                            (sans séparateurs)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group"
+                                         [ngClass]="{ 'has-error': !phone.valid && phone.touched  }">
+                                        <input type="phone"
+                                               name="phone"
+                                               placeholder="N° Téléphone portable"
+                                               class="form-control"
+                                               [formControl]="RegisterForm.controls['phone']"/>
+                                        <div *ngIf="phone.touched && phone.invalid" class="help-block">
+                                            <div *ngIf="phone.errors.required">
+                                                Le numéro de portable vous sert à recevoir
+                                                les notifications de rendez-vous;
+                                                Il doit comporter 10 chiffres mais pas de séparateurs
+                                            </div>
+                                            <div *ngIf="phone.errors.pattern">
+                                                Le numéro de téléphone doit être un téléphone mobile
+                                                commencant par 06 ou 07.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group"
+                                         [ngClass]="{ 'has-error': !city.valid && city.touched }">
+                                        <input type="text"
+                                               class="form-control"
+                                               name="city"
+                                               placeholder="Ville"
+                                               [formControl]="RegisterForm.controls['city']"/>
+                                        <div *ngIf="city.invalid && city.touched" class="help-block">
+                                            Veuillez indiquer votre ville
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group"
+                                         [ngClass]="{ 'has-error': !email.valid && email.touched }">
+                                        <input type="email"
+                                               class="form-control"
+                                               name="email"
+                                               placeholder="Adresse mail"
+                                               [formControl]="RegisterForm.controls['email']"/>
+                                        <div *ngIf="email.invalid && email.touched" class="help-block">
+                                            Votre email est votre identifiant principal et semble invalide
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group"
+                                         [ngClass]="{ 'has-error': password.invalid && password.touched }">
+                                        <input type="password"
+                                               class="form-control"
+                                               name="password"
+                                               placeholder="Mot de passe"
+                                               [formControl]="RegisterForm.controls['password']"/>
+                                        <div *ngIf="password.invalid && password.touched"
+                                             class="help-block">
+                                            Il faut un mot de passe pour sécuriser vos données
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui segment center aligned">
+                                    <button type="submit"
+                                            class="ui button orange inverted"
+                                            [disabled]="RegisterForm.invalid"
+                                            angulartics2On="click"
+                                            angularticsCategory="Evenement"
+                                            angularticsAction="Inscription">
+                                        Je m'inscris !
+                                    </button>
+                                    <br>
+                                    <small>
+                                        En continuant, j'accepte que les conditions générales
+                                        de Mandareen SAS et d'être contacté(e) par les moyens ci-dessus
+                                        pour les besoins du service Mandareen PRO.
+                                    </small>
+                                </div>
+
+                                <div class="text-left small-margin">
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="full-page-background"></div>
+    </div>
+</div>
+
+<!--<loader-component *ngIf="loaderState"></loader-component>-->

@@ -1,0 +1,33 @@
+<div class="ui segment">
+    <h1 class="title1">Création de nouveau suivi</h1>
+
+    <div class="ui stackable grid two column">
+        <div class="column ui form">
+            <div class="block min-height">
+                <h4 class="ui header">
+                    Choix du patient
+                </h4>
+                <select [(ngModel)]="selectedPatientId" *ngIf="patients.length > 0"> // value is a string or number
+                    <option *ngFor="let patient of patients" [value]="patient.id">{{patient.firstname + ' ' + patient.lastname}}</option>
+                </select>
+            </div>
+            <div class="block min-height">
+            <h4 class="ui header">
+                Choix du soin
+            </h4>
+            <select [(ngModel)]="selectedCareId" *ngIf="cares.length > 0"> // value is a string or number
+                <option *ngFor="let care of cares" [value]="care.id">{{care.sickness_name}}</option>
+            </select>
+        </div>
+        </div>
+
+    </div>
+
+    <div>
+        <button class="ui button green inverted" (click)="createFollowUp()">Créer un suivi</button>
+        <a routerLinkActive="active" [routerLink]="['/admin/followups']">
+            <button class="ui button red inverted">Annuler</button>
+        </a>
+    </div>
+
+</div>

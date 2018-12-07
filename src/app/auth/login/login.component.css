@@ -1,0 +1,33 @@
+h3.mandareen {
+    margin-top: 0;
+    font-weight: 900;
+    color: #fea617;
+}
+
+h3.account {
+    margin-bottom: 0;
+}
+
+a.mandareen {
+    color: #fea617;
+}
+
+a.mandareen:hover {
+    color: orangered;
+}
+
+.item > .content > .header {
+    color: #fea617;
+}
+
+.wrapper {
+    margin-top: -7%;
+    padding-top: 5%;
+    background: url('../../../assets/img/bg.jpg') no-repeat center;
+    background-size: 100% 100%;
+    background-position: top center;
+}
+
+.ui.header {
+    color: white;
+}

@@ -1,0 +1,39 @@
+<div class="ui segment">
+    <h1 class="title1">Nouveau rapport Mandareen </h1>
+
+    <div class="ui stackable grid two column">
+        <div class="column ui form">
+            <div class="block min-height">
+                <h4 class="ui header">
+                    Choix du patient
+                </h4>
+                <select [(ngModel)]="selectedPatientId" *ngIf="patients.length > 0"> // value is a string or number
+                    <option *ngFor="let patient of patients" [value]="patient.id">{{patient.firstname + ' ' +
+                        patient.lastname}}
+                    </option>
+                </select>
+            </div>
+            <div class="block min-height">
+                <h4 class="ui header">
+                    Date
+                </h4>
+                <input class="form-control form-control-primary" type="date"
+                       [(ngModel)]="form.date">
+                <h4 class="ui header">
+                    Contenu
+                </h4>
+                <textarea autosize [(ngModel)]="form.content"></textarea>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div>
+        <button class="ui button green inverted" (click)="createReport()">Créer le rapport Mandareen</button>
+        <a routerLinkActive="active" [routerLink]="['/admin/reports']">
+            <button class="ui button red inverted">Annuler</button>
+        </a>
+    </div>
+
+</div>

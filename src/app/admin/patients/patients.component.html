@@ -1,0 +1,50 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div *ngIf="patients.length === 0" class="alert alert-info">
+                    <span>Aucun patient pour le moment</span>
+                </div>
+
+                <div *ngIf="patients.length > 0" class="card hidden-xs">
+                    <div class="header text-center">
+                        <h4>Liste de mes patients</h4>
+                    </div>
+                    <button class="ui button green inverted right floated" routerLinkActive="active" [routerLink]="['/admin/patients/new']">
+                        <i class="fa fa-user-plus"></i>Ajouter un patient
+                    </button>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table">
+                            <thead>
+                           <tr>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Date de naissance</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let patient of patients" (click)="goToPatientEdit(patient)">
+
+                                <td>{{ patient.patient.firstname }}</td>
+                                <td>{{ patient.patient.lastname }}</td>
+                                <td>{{ patient.patient.birthdate }}</td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+                <div *ngIf="patients.length > 0" class="hidden-sm hidden-md hidden-lg">
+                    <ul class="list-group" *ngFor="let patient of patients">
+                        <li class="list-group-item">
+                            <h6>{{ patient.patient.firstname }} {{ patient.patient.lastname }}
+                                <small>({{ thisYear - patient.patient.birthdate }} ans)</small>
+                            </h6>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

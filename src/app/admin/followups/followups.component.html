@@ -1,0 +1,57 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div *ngIf="followups.length === 0" class="alert alert-info">
+                    <span>Aucun suivi pour le moment</span>
+                </div>
+
+                <div *ngIf="followups.length > 0" class="card hidden-xs">
+                    <div class="header text-center">
+                        <h4 class="title">Liste de mes suivis</h4>
+                    </div>
+                    <button class="ui button green inverted right floated" routerLinkActive="active" [routerLink]="['/admin/followups/new']">
+                        <i class="fa fa-user-plus"></i>Créer un suivi
+                    </button>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Statut</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let followup of followups">
+                                <td> {{followup.patient.firstname}}</td>
+                                <td> {{followup.patient.lastname}}</td>
+                                <td *ngIf="followup.status === 'Accepted'">
+                                    Accepté
+                                </td>
+                                <td *ngIf="followup.status === 'Refused'">
+                                    Refusé
+                                </td>
+                                <td *ngIf="followup.status === 'Notification sent'">
+                                    En attente
+                                </td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+                <div *ngIf="followups.length > 0" class="hidden-sm hidden-md hidden-lg">
+                    <ul class="list-group" *ngFor="let report of reports">
+                        <li class="list-group-item">
+                            <h6>{{ report.firstname }} {{ report.lastname }}
+                                <small>({{ thisYear - report.birthdate }} ans)</small>
+                            </h6>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

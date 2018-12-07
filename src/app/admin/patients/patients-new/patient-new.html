@@ -1,0 +1,52 @@
+<div class="ui segment">
+    <h1 class="title1">Fiche patient</h1>
+
+    <div class="ui stackable grid two column">
+        <div class="column ui form">
+            <h4 class="ui header">
+                Informations de connexion
+            </h4>
+            <div class="field">
+                <label>E-mail : </label>
+                <input type="text" [(ngModel)]="patient.email" placeholder="E-mail">
+            </div>
+            <div class="field">
+                <label>Mot de passe </label>
+                <input type="text" [(ngModel)]="patient.password" placeholder="mot de passe">
+            </div>
+        </div>
+        <div class="column ui form">
+            <div class="block min-height">
+                <h4 class="ui header">
+                    Informations personnelles
+                </h4>
+                <div class="field">
+                    <label class="block-label">Civilité : </label>
+                        <select [(ngModel)]="patient.civility" placeholder="Civilité">
+                            <option value="M">M</option>
+                            <option value="Mme">F</option>
+                        </select>
+                </div>
+                <div class="field">
+                    <label class="block-label">Nom : </label>
+                    <input type="text" [(ngModel)]="patient.lastname" placeholder="Nom">
+                </div>
+                <div class="field">
+                    <label class="block-label">Prénom : </label>
+                    <input type="text" [(ngModel)]="patient.firstname" placeholder="Prénom">
+                </div>
+                <div class="field">
+                    <label class="block-label">Année de naissance : </label>
+                    <input type="text" [(ngModel)]="patient.birthdate" placeholder="Année">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <button class="ui button green inverted" (click)="createPatient()">Sauvegarder</button>
+    <a routerLinkActive="active" [routerLink]="['/admin/patients']">
+        <button class="ui button red inverted">Annuler</button>
+    </a>
+</div>

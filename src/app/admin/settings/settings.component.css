@@ -1,0 +1,13 @@
+.toolbar {
+    margin-top: 5%;
+    margin-left: 25%;
+}
+.toolbar ul {
+    display:table-row;
+}
+.toolbar ul li{
+    display: table-cell;
+    list-style-type: none;
+    vertical-align: middle;
+    padding: 0 10%;
+}
