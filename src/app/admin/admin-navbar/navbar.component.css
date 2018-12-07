@@ -1,0 +1,16 @@
+.logo-navbar{
+    width:90%;
+}
+
+.message-center {
+    height: auto;
+    font-size: 16px;
+}
+
+.topbar .top-navbar .navbar-nav > .nav-item > .nav-link {
+    font-size: 20px;
+}
+
+.hidden {
+    display: none;
+}

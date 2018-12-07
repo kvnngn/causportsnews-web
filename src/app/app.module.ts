@@ -11,12 +11,8 @@ import {PatientService} from './providers/patient.service';
 import {ReportsService} from './providers/reports.service';
 import {NotFoundComponent} from './shared/404/404.component';
 import {ErrorComponent} from './shared/error/error.component';
-import {SidebarModule} from './admin/sidebar/sidebar.module';
 import {FooterModule} from './shared/footer/footer.module';
 import {NavbarModule} from './shared/navbar/navbar.module';
-
-
-import {HomeComponent} from './admin/home/home.component';
 import {ApiService} from './providers';
 import {ProService} from './providers';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
@@ -25,6 +21,7 @@ import {AuthLayoutComponent} from './layouts/auth/auth-layout.component';
 import {AdminLayoutComponent} from './layouts/admin/admin-layout.component';
 import {AdminGuard} from './providers/admin-guard.service';
 import {AdminNavbarModule} from "./admin/admin-navbar/navbar.module";
+import {MDBBootstrapModule} from "angular-bootstrap-md";
 
 @NgModule({
     declarations: [
@@ -38,12 +35,12 @@ import {AdminNavbarModule} from "./admin/admin-navbar/navbar.module";
         BrowserModule,
         HttpClientModule,
         RouterModule.forRoot(AppRoutes),
-        SidebarModule,
         NavbarModule,
         FooterModule,
         ReactiveFormsModule,
         AuthnavbarModule,
-        AdminNavbarModule
+        AdminNavbarModule,
+        MDBBootstrapModule.forRoot()
     ],
     providers: [
         ApiService,

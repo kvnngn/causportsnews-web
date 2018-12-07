@@ -1,21 +1,31 @@
 import {Component, OnInit, Renderer, ViewChild, ElementRef} from '@angular/core';
 import {AuthenticationService} from '../../providers';
-import {ROUTES} from '../../admin/sidebar/sidebar.component';
-import {Router, ActivatedRoute} from '@angular/router';
-import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import {Location} from '@angular/common';
 
+declare var $: any;
+
+export const ROUTES = [
+    {path: '/admin/home', title: 'Accueil', icon: 'fa fa-home', class: ''},
+    {path: '/admin/patients', title: 'Mes patients', icon: 'fa fa-user', class: ''},
+    {path: '/admin/reports', title: 'Mes rapports', icon: 'fa fa-clipboard', class: ''},
+    {path: '/admin/followups', title: 'Mes suivis', icon: 'fa fa-handshake-o', class: ''},
+    {path: '/admin/settings', title: 'Paramètres', icon: 'fa fa-cogs', class: ''}
+];
 @Component({
     moduleId: module.id,
     selector: 'adminnavbar-cmp',
-    templateUrl: 'navbar.component.html'
+    templateUrl: 'navbar.component.html',
+    styleUrls: ['./navbar.component.css']
+
 })
 
 export class NavbarComponent implements OnInit {
-    private listTitles: any[];
     location: Location;
     private nativeElement: Node;
     private toggleButton;
     private sidebarVisible: boolean;
+    public menuItems: any[];
+
 
     @ViewChild('adminnavbar-cmp') button;
 
@@ -29,39 +39,17 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.listTitles = ROUTES.filter(listTitle => listTitle);
+        this.menuItems = ROUTES.filter(menuItem => menuItem);
         var navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
     }
 
-    getTitle() {
-        var titlee = window.location.pathname;
-        titlee = titlee.substring(1);
-        for (var item = 0; item < this.listTitles.length; item++) {
-            if (this.listTitles[item].path === titlee) {
-                return this.listTitles[item].title;
-            }
+    isNotMobileMenu() {
+        if ($(window).width() > 991) {
+            return false;
         }
-        return 'Accueil';
+        return true;
     }
-
-    sidebarToggle() {
-        var toggleButton = this.toggleButton;
-        var body = document.getElementsByTagName('body')[0];
-
-        if (this.sidebarVisible == false) {
-            setTimeout(function () {
-                toggleButton.classList.add('toggled');
-            }, 500);
-            body.classList.add('nav-open');
-            this.sidebarVisible = true;
-        } else {
-            this.toggleButton.classList.remove('toggled');
-            this.sidebarVisible = false;
-            body.classList.remove('nav-open');
-        }
-    }
-
 
     logout() {
         return this.authenticationService.logout();

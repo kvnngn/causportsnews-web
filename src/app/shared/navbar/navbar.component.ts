@@ -1,6 +1,5 @@
 import {Component, OnInit, Renderer, ViewChild, ElementRef} from '@angular/core';
 import {AuthenticationService} from '../../providers';
-import {ROUTES} from '../../admin/sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 @Component({

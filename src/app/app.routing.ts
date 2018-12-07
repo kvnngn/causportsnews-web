@@ -8,7 +8,7 @@ import {AdminGuard} from './providers/admin-guard.service';
 export const AppRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'auth/login',
+        redirectTo: 'admin/home',
         pathMatch: 'full'
     },
     {
@@ -18,7 +18,6 @@ export const AppRoutes: Routes = [
     },
     {
         path: 'admin',
-        canActivate: [AdminGuard],
         component: AdminLayoutComponent,
         loadChildren: './admin/admin.module#AdminModule'
     },
