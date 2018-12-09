@@ -8,11 +8,11 @@ import {ReportsService} from '../../../providers/reports.service';
 
 
 @Component({
-    selector: 'app-patients',
-    templateUrl: './patients-edit.html',
-    styleUrls: ['./patients-edit.component.css']
+    selector: 'app-articles',
+    templateUrl: './articles-edit.html',
+    styleUrls: ['./articles-edit.component.css']
 })
-export class PatientsEditComponent implements OnInit {
+export class ArticlesEditComponent implements OnInit {
 
     patientId: any;
     user;
@@ -58,7 +58,7 @@ export class PatientsEditComponent implements OnInit {
             patient => {
                 this.firstname = this.patient.firstname;
                 this.lastname = this.patient.lastname;
-                this.alertService.alert('success', 'Le profil du patient a bien été mis à jour');
+                this.alertService.alert('success', 'Le profil du article a bien été mis à jour');
             },
             error => {this.alertService.alert('warning', 'Une erreur est survenue lors de la mise à jour du profil');}
         );

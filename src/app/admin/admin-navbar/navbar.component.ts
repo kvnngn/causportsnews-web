@@ -5,11 +5,8 @@ import {Location} from '@angular/common';
 declare var $: any;
 
 export const ROUTES = [
-    {path: '/admin/home', title: 'Accueil', icon: 'fa fa-home', class: ''},
-    {path: '/admin/patients', title: 'Mes patients', icon: 'fa fa-user', class: ''},
-    {path: '/admin/reports', title: 'Mes rapports', icon: 'fa fa-clipboard', class: ''},
-    {path: '/admin/followups', title: 'Mes suivis', icon: 'fa fa-handshake-o', class: ''},
-    {path: '/admin/settings', title: 'Paramètres', icon: 'fa fa-cogs', class: ''}
+    {path: '/admin/home', title: 'Home', icon: 'fa fa-home', class: ''},
+    {path: '/admin/article/new', title: 'New article', icon: 'fa fa-user', class: ''}
 ];
 @Component({
     moduleId: module.id,

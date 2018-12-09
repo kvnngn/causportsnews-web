@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 
 import {AppComponent} from './app.component';
 import {AppRoutes} from './app.routing';
-import {AccountService, AuthenticationService, CaresService, FollowupsService} from './providers';
+import {AccountService, AuthenticationService, CaresService, FollowupsService, UserService} from './providers';
 import {AlertService} from './providers/alert.service';
 import {PatientService} from './providers/patient.service';
 import {ReportsService} from './providers/reports.service';
@@ -14,7 +14,6 @@ import {ErrorComponent} from './shared/error/error.component';
 import {FooterModule} from './shared/footer/footer.module';
 import {NavbarModule} from './shared/navbar/navbar.module';
 import {ApiService} from './providers';
-import {ProService} from './providers';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AuthnavbarModule} from './shared/navbar/authnavbar.module';
 import {AuthLayoutComponent} from './layouts/auth/auth-layout.component';
@@ -44,7 +43,7 @@ import {MDBBootstrapModule} from "angular-bootstrap-md";
     ],
     providers: [
         ApiService,
-        ProService,
+        UserService,
         HttpClient,
         AuthenticationService,
         AdminGuard,
@@ -53,7 +52,7 @@ import {MDBBootstrapModule} from "angular-bootstrap-md";
         CaresService,
         FollowupsService,
         ReportsService,
-        AccountService
+        AccountService,
     ],
     bootstrap: [AppComponent]
 })

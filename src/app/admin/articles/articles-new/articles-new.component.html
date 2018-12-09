@@ -1,0 +1,49 @@
+<div class="ui segment">
+    <h1 class="title1">New article</h1>
+
+    <div class="ui stackable grid two column">
+        <div class="column ui form">
+            <h4 class="ui header">
+                Information
+            </h4>
+            <div class="field">
+                <label class="block-label">Title : </label>
+                <input type="text" [(ngModel)]="article.title" placeholder="Title">
+            </div>
+            <div class="field">
+                <label class="block-label">Introduction : </label>
+                <input type="text" [(ngModel)]="article.introduction" placeholder="Introduction">
+            </div>
+            <div class="field">
+                <label class="block-label">Content : </label>
+                <input type="text" [(ngModel)]="article.content" placeholder="Content">
+            </div>
+            <div class="field">
+                <label class="block-label">Type : </label>
+                <select [(ngModel)]="article.type" placeholder="Type">
+                    <option value="Football">Football</option>
+                    <option value="American football">American football</option>
+                    <option value="Taekwondo">Taekwondo</option>
+                    <option value="Tennis table">Tennis table</option>
+                    <option value="Basket-ball">Basket-ball</option>
+                </select>
+            </div>
+            <div class="field">
+                <label class="block-label">Image : </label>
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <input type="file" id="avatar" (change)="onFileChange($event)" #fileInput>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <button type="submit" [disabled]="form.invalid || loading" class="ui button green inverted" (click)="createArticle()">Create <i
+            class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+    <a routerLinkActive="active" [routerLink]="['/admin/home']">
+        <button class="ui button red inverted">Cancel</button>
+    </a>
+</div>

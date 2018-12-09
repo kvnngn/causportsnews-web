@@ -8,7 +8,7 @@ export class PatientService {
     }
 
     getPatientById(id): Observable<any> {
-        return this.api.get('/pro/patient/id/' + id);
+        return this.api.get('/pro/article/id/' + id);
     }
 
     getPatients(): Observable<any> {
@@ -16,10 +16,10 @@ export class PatientService {
     }
 
     update(params): Observable<any> {
-        return this.api.put('/pro/patient/update', params);
+        return this.api.put('/pro/article/update', params);
     }
 
     resetPassword(params): Observable<any> {
-        return this.api.put('/pro/patient/resetPassword', params);
+        return this.api.put('/pro/article/resetPassword', params);
     }
 }
