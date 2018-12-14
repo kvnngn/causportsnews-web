@@ -1,5 +1,5 @@
 .logo-navbar{
-    width:90%;
+    width:100%;
 }
 
 .message-center {
@@ -9,8 +9,19 @@
 
 .topbar .top-navbar .navbar-nav > .nav-item > .nav-link {
     font-size: 20px;
+    padding: 100%;
+    margin: 0px;
 }
 
 .hidden {
     display: none;
+}
+
+.bg-secondary {
+    background: #605833 !important;
+    padding: 0px !important;
+}
+
+.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .nav-link.active {
+    background: #92864d;
 }

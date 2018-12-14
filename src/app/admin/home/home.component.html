@@ -13,23 +13,21 @@
                 <div class="card">
                     <div class="content">
                         <div class="header text-center">
-                            <h4>News</h4>
-                            <div class="card" *ngFor="let article of articles">
+                            <div class="cardNews" *ngFor="let article of articles">
                                 <div>
-                                    <img [src]="article.img | safeHtml" />
-                                </div>
-                                <div>
-                                    <b>{{article.title}}</b>
-                                </div>
-                                <div>
-                                    Written on : {{article.creation_date | date: 'yyyy/MM/dd'}}
+                                    <h2>
+                                        <a (click)="goToArticleDetails(article)">{{article.title}}</a>
+                                    </h2>
                                 </div>
                                 <div>
                                     <b>{{article.introduction}}</b>
                                 </div>
+                                <div class="post-info">
+                                    ({{article.creation_date | date: 'dd/MM/yyyy'}}) by Ronaldo
+                                </div>
                                 <div class="content">
                                     <p>{{article.content | slice:0:300}}...</p>
-                                    <a (click)="goToArticleDetails(article)">Read more</a>
+                                    <a class="read-more" (click)="goToArticleDetails(article)">Read more</a>
                                 </div>
                             </div>
                         </div>
