@@ -8,6 +8,7 @@ import {HomeComponent} from './home/home.component';
 import {AdminRoutes} from './admin.routing';
 import {ArticlesEditComponent} from "./articles/articles-edit/articles-edit.component";
 import {ArticlesNewComponent} from "./articles/articles-new/articles-new.component";
+import {SafeHtml} from "../shared/SafeHtml";
 
 @NgModule({
     imports: [
@@ -20,10 +21,11 @@ import {ArticlesNewComponent} from "./articles/articles-new/articles-new.compone
     declarations: [
         HomeComponent,
         ArticlesEditComponent,
-        ArticlesNewComponent
+        ArticlesNewComponent,
+        SafeHtml
     ],
     providers: [],
-    exports: [],
+    exports: [SafeHtml],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 

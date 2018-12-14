@@ -14,6 +14,24 @@
                     <div class="content">
                         <div class="header text-center">
                             <h4>News</h4>
+                            <div class="card" *ngFor="let article of articles">
+                                <div>
+                                    <img [src]="article.img | safeHtml" />
+                                </div>
+                                <div>
+                                    <b>{{article.title}}</b>
+                                </div>
+                                <div>
+                                    {{article.creation_date | date: 'yyyy/MM/dd'}}
+                                </div>
+                                <div>
+                                    <b>{{article.introduction}}</b>
+                                </div>
+                                <div class="content">
+                                    <p>{{article.content}}</p>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

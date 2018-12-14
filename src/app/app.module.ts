@@ -1,5 +1,5 @@
 import {ReactiveFormsModule} from '@angular/forms';
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, SafeResourceUrl} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 
@@ -21,6 +21,7 @@ import {AdminLayoutComponent} from './layouts/admin/admin-layout.component';
 import {AdminGuard} from './providers/admin-guard.service';
 import {AdminNavbarModule} from "./admin/admin-navbar/navbar.module";
 import {MDBBootstrapModule} from "angular-bootstrap-md";
+import {SafeHtml} from "./shared/SafeHtml";
 
 @NgModule({
     declarations: [
@@ -39,7 +40,7 @@ import {MDBBootstrapModule} from "angular-bootstrap-md";
         ReactiveFormsModule,
         AuthnavbarModule,
         AdminNavbarModule,
-        MDBBootstrapModule.forRoot()
+        MDBBootstrapModule.forRoot(),
     ],
     providers: [
         ApiService,
