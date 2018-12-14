@@ -16,9 +16,8 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AuthnavbarModule} from './shared/navbar/authnavbar.module';
 import {AuthLayoutComponent} from './layouts/auth/auth-layout.component';
 import {AdminLayoutComponent} from './layouts/admin/admin-layout.component';
-import {AdminNavbarModule} from "./admin/admin-navbar/navbar.module";
-import {MDBBootstrapModule} from "angular-bootstrap-md";
-import {SafeHtml} from "./shared/SafeHtml";
+import {AdminNavbarModule} from './admin/admin-navbar/navbar.module';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
 
 @NgModule({
     declarations: [
