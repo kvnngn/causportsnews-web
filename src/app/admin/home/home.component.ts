@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService, UserService} from "../../providers";
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
+import {Router} from "@angular/router";
 
 declare var $: any;
 
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit {
     user: any;
 
     constructor(private userService: UserService,
+                private router: Router,
                 private authenticationService: AuthenticationService) {
         this.user = this.authenticationService.getUser();
         console.log(this.user);
@@ -37,5 +39,10 @@ export class HomeComponent implements OnInit {
                 console.log(error)
             }
         );
+    }
+
+    goToArticleDetails(article) {
+        console.log(article)
+        this.router.navigate(['/admin/article/details/' + article.id], article);
     }
 }

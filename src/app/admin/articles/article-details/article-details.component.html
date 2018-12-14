@@ -1,0 +1,69 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <div class="card">
+                    <div class="content">
+                        <p>Results</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card">
+                    <div class="content" *ngIf="article">
+                        <div class="header text-center">
+                            <h4>News</h4>
+                            <div>
+                                <img [src]="article.img | safeHtml"/>
+                            </div>
+                            <div>
+                                <b>{{article.title}}</b>
+                            </div>
+                            <div>
+                                Written on : {{article.creation_date | date: 'yyyy/MM/dd'}}
+                            </div>
+                            <div>
+                                <b>{{article.introduction}}</b>
+                            </div>
+                            <div class="content">
+                                <p>{{article.content}} </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="content">
+                        <div class="header text-center">
+                            <h4>Comments</h4>
+                            <div class="content">
+                                <label> Add new comment : </label>
+                                <input type="text" [(ngModel)]="newComment.content">
+                                <button (click)="addComment()">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content" *ngIf="article">
+                        <div class="header text-center">
+                            <div class="card" *ngFor="let comment of article.comments">
+                                <div class="content">
+                                    <p>{{comment.content}}</p>
+                                    <p>{{comment.user.firstname + ' ' + comment.user.lastname}}</p>
+                                    <p>{{comment.creation_date | date: 'yyyy/MM/dd'}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="content">
+                        <p>Last minute</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -11,11 +11,15 @@ export class UserService {
         return this.api.post('/article/create/', article);
     }
 
+    addComment(newComment) {
+        return this.api.post('/comment/create/', newComment);
+    }
+
     getArticles() {
         return this.api.get('/articles');
     }
 
-    getArticleById() {
+    getArticleById(id) {
         return this.api.get('/article/id/1');
     }
 }

@@ -22,14 +22,14 @@
                                     <b>{{article.title}}</b>
                                 </div>
                                 <div>
-                                    {{article.creation_date | date: 'yyyy/MM/dd'}}
+                                    Written on : {{article.creation_date | date: 'yyyy/MM/dd'}}
                                 </div>
                                 <div>
                                     <b>{{article.introduction}}</b>
                                 </div>
                                 <div class="content">
-                                    <p>{{article.content}}</p>
-
+                                    <p>{{article.content | slice:0:300}}...</p>
+                                    <a (click)="goToArticleDetails(article)">Read more</a>
                                 </div>
                             </div>
                         </div>

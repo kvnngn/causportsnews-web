@@ -3,7 +3,6 @@ import {NotFoundComponent} from './shared/404/404.component';
 import {ErrorComponent} from './shared/error/error.component';
 import {AuthLayoutComponent} from './layouts/auth/auth-layout.component';
 import {AdminLayoutComponent} from './layouts/admin/admin-layout.component';
-import {AdminGuard} from './providers/admin-guard.service';
 
 export const AppRoutes: Routes = [
     {
