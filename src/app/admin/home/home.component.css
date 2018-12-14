@@ -1,3 +1,23 @@
+.team-logo {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.results {
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.score {
+    font-weight: bold;
+}
+
+.result {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
 .cardNews {
     background: #f3f0de;
     border: 2px solid black;

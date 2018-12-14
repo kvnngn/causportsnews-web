@@ -15,6 +15,8 @@ declare var $: any;
 export class HomeComponent implements OnInit {
 
     articles: any = [];
+    results: any = [];
+    favorites: any = [];
     user: any;
 
     constructor(private userService: UserService,
@@ -22,8 +24,9 @@ export class HomeComponent implements OnInit {
                 private authenticationService: AuthenticationService) {
         this.user = this.authenticationService.getUser();
         console.log(this.user);
-        this.getArticles()
-
+        this.getArticles();
+        this.getResults();
+        this.getFavorites();
     }
 
     ngOnInit() {
@@ -33,8 +36,50 @@ export class HomeComponent implements OnInit {
         this.userService.getArticles().subscribe(
             articles => {
                 this.articles = articles;
-                console.log(this.articles);
-                // console.log(this.articles);
+            },
+            error => {
+                console.log(error)
+            }
+        );
+    }
+
+    getResults() {
+        this.userService.getResults().subscribe(
+            results => {
+                this.results = results;
+            },
+            error => {
+                console.log(error)
+            }
+        );
+    }
+
+    getFavorites() {
+        this.userService.getUserFavorites(this.user.user.id).subscribe(
+            favorites => {
+                this.favorites = favorites;
+            },
+            error => {
+                console.log(error)
+            }
+        );
+    }
+
+    addToFavorites(article) {
+        this.userService.addToFavorites({user_id: this.user.user.id, article_id: article.id}).subscribe(
+            res => {
+                this.getFavorites();
+            },
+            error => {
+                console.log(error)
+            }
+        );
+    }
+
+    removeFromFavorites(article) {
+        this.userService.removeFromFavorites(article.id).subscribe(
+            res => {
+                this.getFavorites();
             },
             error => {
                 console.log(error)
@@ -43,7 +88,13 @@ export class HomeComponent implements OnInit {
     }
 
     goToArticleDetails(article) {
-        console.log(article)
         this.router.navigate(['/admin/article/details/' + article.id], article);
+    }
+
+    isFromFavorites(article_id) {
+        console.log(article_id)
+        this.favorites.forEach((favorite) => {
+           console.log(favorite.article_id)
+       })
     }
 }
