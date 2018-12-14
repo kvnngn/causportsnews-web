@@ -15,8 +15,28 @@ export class UserService {
         return this.api.post('/comment/create/', newComment);
     }
 
+    addToFavorites(infos) {
+        return this.api.post('/favorite/create/', infos);
+    }
+
+    removeFromFavorites(id) {
+        return this.api.delete('/favorite/delete/id/' + id);
+    }
+
+    addResult(newResult) {
+        return this.api.post('/result/create/', newResult);
+    }
+
     getArticles() {
         return this.api.get('/articles');
+    }
+
+    getUserFavorites(id) {
+        return this.api.get('/favorites/id/' + id);
+    }
+
+    getResults() {
+        return this.api.get('/results');
     }
 
     getArticleById(id) {

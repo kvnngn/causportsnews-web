@@ -6,9 +6,9 @@ import {TextareaAutosizeModule} from 'ngx-textarea-autosize';
 import {HomeComponent} from './home/home.component';
 
 import {AdminRoutes} from './admin.routing';
-import {ArticlesNewComponent} from './articles/articles-new/articles-new.component';
 import {SafeHtml} from '../shared/SafeHtml';
 import {ArticleDetailsComponent} from './articles/article-details/article-details.component';
+import {PanelAdminComponent} from "./articles/panel-admin/panel-admin.component";
 
 @NgModule({
     imports: [
@@ -20,7 +20,7 @@ import {ArticleDetailsComponent} from './articles/article-details/article-detail
     ],
     declarations: [
         HomeComponent,
-        ArticlesNewComponent,
+        PanelAdminComponent,
         SafeHtml,
         ArticleDetailsComponent
     ],

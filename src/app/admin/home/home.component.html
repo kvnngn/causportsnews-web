@@ -5,18 +5,36 @@
                 <div class="card">
                     <div class="content">
                         <p>Results</p>
+                        <div *ngFor="let result of results" class="results">
+                            <div class="result">
+                                <img src="./assets/img/unknown.png" class="team-logo">
+                                {{result.team1_name }}
+                                <span class="score">
+                                {{result.score_1 + ' - ' + result.score_2}}
+                                </span>
+                                {{result.team2_name}}
+                                <img src="./assets/img/unknown.png" class="team-logo">
+                            </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-6">
                 <div class="card">
                     <div class="content">
-                        <div class="header text-center">
+                        <div class="header">
                             <h4>News</h4>
                             <div class="card" *ngFor="let article of articles">
+                                <button [hidden]="isFromFavorites(article.id)" (click)="addToFavorites(article)" class="ui button green inverted">
+                                    Add to favorite
+                                    <i class="fa fa-star"></i>
+                                </button>
                                 <div>
-                                    <img [src]="article.img | safeHtml" />
+
+                                </div>
+                                <div>
+                                    <img [src]="article.img | safeHtml"/>
                                 </div>
                                 <div>
                                     <b>{{article.title}}</b>
@@ -39,7 +57,19 @@
             <div class="col-3">
                 <div class="card">
                     <div class="content">
-                        <p>Last minute</p>
+                        <p>Favorites</p>
+                        <div class="card" *ngFor="let favorite of favorites">
+                            <div>
+
+                            <div>
+                                <b>{{favorite.article.title}}</b>
+                                <button (click)="removeFromFavorites(favorite)" class="ui button red inverted">
+                                    Remove from favorite
+                                    <i class="fa fa-star"></i>
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
