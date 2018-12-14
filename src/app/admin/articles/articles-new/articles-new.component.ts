@@ -19,14 +19,17 @@ export class ArticlesNewComponent {
         content: '',
         type: '',
         img: '',
+        admin_id: ''
     };
+    user: any;
 
     constructor(private userService: UserService,
                 private ngZone: NgZone,
                 private fb: FormBuilder,
-                private authentificationService: AuthenticationService,
+                private authenticationService: AuthenticationService,
                 private router: Router) {
-        this.createForm();
+        this.user = this.authenticationService.getUser();
+       this.createForm();
     }
 
     createForm() {
@@ -37,7 +40,7 @@ export class ArticlesNewComponent {
 
     onFileChange(event) {
         let reader = new FileReader();
-        if(event.target.files && event.target.files.length > 0) {
+        if (event.target.files && event.target.files.length > 0) {
             let file = event.target.files[0];
             reader.readAsDataURL(file);
             reader.onload = () => {
@@ -51,9 +54,10 @@ export class ArticlesNewComponent {
     }
 
     createArticle() {
-        console.log(this.form.value.img.value)
+        this.article.user_id = this.user.user.id;
         this.article.img = this.form.value.img.value;
-        this.userService.createArticle(this.article).subscribe(
+        console.log(this.article)
+            this.userService.createArticle(this.article).subscribe(
             article => {
                 console.log(article)
             },

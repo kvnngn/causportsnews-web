@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from "../../providers";
+import {AuthenticationService, UserService} from "../../providers";
 
 declare var $: any;
 
@@ -12,8 +12,12 @@ declare var $: any;
 export class HomeComponent implements OnInit {
 
     articles : any = [];
+    user : any;
 
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService,
+                private authenticationService: AuthenticationService) {
+        this.user = this.authenticationService.getUser();
+        console.log(this.user);
         this.getArticles()
     }
 

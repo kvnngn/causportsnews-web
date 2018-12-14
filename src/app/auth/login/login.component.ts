@@ -12,10 +12,12 @@ import {AlertService} from '../../providers/alert.service';
 
 export class LoginComponent implements OnInit {
     pro: any = {'email': '', 'password': ''};
+    user;
 
     constructor(private authenticationService: AuthenticationService,
                 private alertService: AlertService,
                 private router: Router) {
+
     }
 
     ngOnInit() {
