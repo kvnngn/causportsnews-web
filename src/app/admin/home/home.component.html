@@ -44,7 +44,7 @@
                                     <b>{{article.introduction}}</b>
                                 </div>
                                 <div class="post-info">
-                                    ({{article.creation_date | date: 'dd/MM/yyyy'}}) by Ronaldo
+                                    ({{article.creation_date | date: 'yyyy/MM/dd'}}) by {{article.user.firstname + ' ' + article.user.lastname}}
                                 </div>
                                 <div class="content">
                                     <p>{{article.content | slice:0:300}}...</p>
