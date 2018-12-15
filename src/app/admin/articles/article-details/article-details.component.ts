@@ -8,7 +8,8 @@ declare var $: any;
 @Component({
     selector: 'home-cmp',
     moduleId: module.id,
-    templateUrl: 'article-details.component.html'
+    templateUrl: './article-details.component.html',
+    styleUrls: ['./article-details.component.css']
 })
 
 export class ArticleDetailsComponent implements OnInit {
@@ -16,7 +17,9 @@ export class ArticleDetailsComponent implements OnInit {
     article: any;
     article_id = "";
     user: any;
-    newComment: any = {content: '', user_id: '', article_id: ''}
+    newComment: any = {content: '', user_id: '', article_id: ''};
+    results: any = [];
+    favorites: any = [];
 
     constructor(private userService: UserService,
                 private _Activatedroute: ActivatedRoute,
@@ -25,7 +28,8 @@ export class ArticleDetailsComponent implements OnInit {
         this.article_id = this._Activatedroute.snapshot.params.id;
         console.log(this.user);
         this.getArticle()
-
+        this.getResults();
+        if (this.user) {this.getFavorites();}
     }
 
     ngOnInit() {
@@ -51,6 +55,50 @@ export class ArticleDetailsComponent implements OnInit {
             res => {
                 this.getArticle();
                 // console.log(this.articles);
+            },
+            error => {
+                console.log(error)
+            }
+        );
+    }
+
+    getResults() {
+        this.userService.getResults().subscribe(
+            results => {
+                this.results = results;
+            },
+            error => {
+                console.log(error)
+            }
+        );
+    }
+
+    getFavorites() {
+        this.userService.getUserFavorites(this.user.user.id).subscribe(
+            favorites => {
+                this.favorites = favorites;
+            },
+            error => {
+                console.log(error)
+            }
+        );
+    }
+
+    addToFavorites(article) {
+        this.userService.addToFavorites({user_id: this.user.user.id, article_id: article.id}).subscribe(
+            res => {
+                this.getFavorites();
+            },
+            error => {
+                console.log(error)
+            }
+        );
+    }
+
+    removeFromFavorites(article) {
+        this.userService.removeFromFavorites(article.id).subscribe(
+            res => {
+                this.getFavorites();
             },
             error => {
                 console.log(error)

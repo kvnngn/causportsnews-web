@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-3">
                 <div class="card">
-                    <div class="content">
+                    <div class="content" *ngIf="results.length > 0">
                         <p>Results</p>
                         <div *ngFor="let result of results" class="results">
                             <div class="result">
@@ -15,6 +15,12 @@
                                 {{result.team2_name}}
                                 <img src="./assets/img/unknown.png" class="team-logo">
                             </div>
+                        </div>
+                    </div>
+                    <div class="content" *ngIf="results.length == 0">
+                        <p>Results</p>
+                        <div class="header text-center">
+                            No scores for the moment..
                         </div>
                     </div>
                 </div>
