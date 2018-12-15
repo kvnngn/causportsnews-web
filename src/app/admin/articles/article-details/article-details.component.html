@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="content">
+                    <div class="content" *ngIf="user">
                         <div class="header text-center">
                             <h4>Comments</h4>
                             <div class="content">
@@ -43,7 +43,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="content" *ngIf="article">
+                    <div class="content" *ngIf="!user">
+                        <div class="header text-center">
+                            <h4>Please log in <a href="/auth/login">here</a> to add a comment.</h4>
+                        </div>
+                    </div>
+                    <div class="content" *ngIf="article && user">
                         <div class="header text-center">
                             <div class="card" *ngFor="let comment of article.comments">
                                 <div class="content">

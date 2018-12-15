@@ -24,7 +24,7 @@
                     <div class="content">
                         <div class="header text-center" *ngIf="articles.length > 0">
                             <div class="cardNews" *ngFor="let article of articles">
-                                <button [hidden]="isFromFavorites(article.id)" (click)="addToFavorites(article)"
+                                <button [hidden]="!user" (click)="addToFavorites(article)"
                                         class="ui button green inverted">
                                     Add to favorite
                                     <i class="fa fa-star"></i>
