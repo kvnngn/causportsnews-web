@@ -25,12 +25,15 @@ export class ArticleDetailsComponent implements OnInit {
     constructor(private userService: UserService,
                 private _Activatedroute: ActivatedRoute,
                 private alertService: AlertService,
-                private authenticationService: AuthenticationService) {
+                private authenticationService: AuthenticationService,
+                private domSanitizer: DomSanitizer) {
         this.user = this.authenticationService.getUser();
         this.article_id = this._Activatedroute.snapshot.params.id;
         this.getArticle()
         this.getResults();
-        if (this.user) {this.getFavorites();}
+        if (this.user) {
+            this.getFavorites();
+        }
     }
 
     ngOnInit() {

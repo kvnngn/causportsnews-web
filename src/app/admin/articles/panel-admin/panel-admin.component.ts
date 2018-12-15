@@ -117,11 +117,9 @@ export class PanelAdminComponent {
     createResult() {
         this.result.logo_1 = this.form2.value.logo_1.value;
         this.result.logo_2 = this.form2.value.logo_2.value;
-        console.log(this.result)
             this.userService.addResult(this.result).subscribe(
             article => {
                 this.alertService.showNotification('success', 'New result created!');
-                console.log(article)
             },
             error => {
                 this.alertService.showNotification('warning', 'Please check your connection..');

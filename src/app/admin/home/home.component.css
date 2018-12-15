@@ -56,3 +56,9 @@ a.read-more { background-color: #605833; border-radius: 5px 5px 5px 5px; color: 
 
 a.read-more:hover { background-color: #92864d; border-radius: 5px 5px 5px 5px; text-decoration: none; }
 
+.article-image {
+    width: 90%;
+    height: 60%;
+    margin-top: 20px;
+    border-radius: 8px;
+}

@@ -7,13 +7,13 @@
                         <p>Results</p>
                         <div *ngFor="let result of results" class="results">
                             <div class="result">
-                                <img src="./assets/img/unknown.png" class="team-logo">
+                                <img src="{{'data:image/png;base64,' + result.logo_1}}" class="team-logo">
                                 {{result.team1_name }}
                                 <span class="score">
                                 {{result.score_1 + ' - ' + result.score_2}}
                                 </span>
                                 {{result.team2_name}}
-                                <img src="./assets/img/unknown.png" class="team-logo">
+                                <img src="{{'data:image/png;base64,' + result.logo_2}}" class="team-logo">
                             </div>
                         </div>
                     </div>
@@ -30,11 +30,7 @@
                     <div class="content">
                         <div class="header text-center" *ngIf="articles.length > 0">
                             <div class="cardNews" *ngFor="let article of articles">
-                                <button [hidden]="!user" (click)="addToFavorites(article)"
-                                        class="ui button green inverted">
-                                    Add to favorite
-                                    <i class="fa fa-star"></i>
-                                </button>
+                                <img src="{{'data:image/png;base64,' + article.img}}" class="article-image">
                                 <div>
                                     <h2>
                                         <a (click)="goToArticleDetails(article)">{{article.title}}</a>

@@ -25,12 +25,15 @@ export class HomeComponent implements OnInit {
     constructor(private userService: UserService,
                 private router: Router,
                 private authenticationService: AuthenticationService,
-                private alertService: AlertService) {
+                private alertService: AlertService,
+                private domSanitizer: DomSanitizer) {
         this.user = this.authenticationService.getUser();
         this.currentUrl = this.router.url;
         this.getArticles();
         this.getResults();
-        if (this.user) {this.getFavorites();}
+        if (this.user) {
+            this.getFavorites();
+        }
     }
 
     ngOnInit() {
@@ -41,6 +44,7 @@ export class HomeComponent implements OnInit {
         this.userService.getArticles().subscribe(
             articles => {
                 this.articles = articles;
+                console.log(this.articles);
             },
             error => {
                 console.log(error)
@@ -89,6 +93,7 @@ export class HomeComponent implements OnInit {
         this.userService.getResults().subscribe(
             results => {
                 this.results = results;
+                console.log(this.results)
             },
             error => {
                 console.log(error)
@@ -137,5 +142,6 @@ export class HomeComponent implements OnInit {
         this.router.navigate(['/admin/article/details/' + article.id], article);
     }
 
-    isFromFavorites(article_id) {}
+    isFromFavorites(article_id) {
+    }
 }
