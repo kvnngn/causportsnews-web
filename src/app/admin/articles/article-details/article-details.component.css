@@ -18,6 +18,7 @@
     margin-bottom: 10px;
     margin-top: 10px;
 }
+
 .cardNews {
     background: #f3f0de;
     border: 2px solid black;
@@ -28,37 +29,76 @@
     border-bottom: 2px dashed black;
 }
 
-h1 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 100px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
+h1 {
+    color: #111;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 100px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+    text-align: center;
+}
 
 h2,
+h2 a,
+h2 a:visited {
+    font-family: Georgia, arial, serif;
+    font-size: 38px;
+}
 
 h2 a,
+h2 a:visited {
+    color: #605833;
+    font-family: Georgia, arial, serif;
+}
 
+h2 a:hover {
+    color: #92864d;
+    text-decoration: none;
+}
 
-h2 a:visited { font-family: Georgia, arial, serif; font-size: 38px; }
+p {
+    color: #605833;
+    font-family: Enriqueta;
+    font-size: 16px;
+    padding: 10px 0;
+}
 
-h2 a,
+.post-info {
+    border-top: 1px dashed #70673b;
+    border-bottom: 1px dashed #70673b;
+    font-size: 13px;
+    margin: 15px 0 15px;
+    padding: 3px;
+    text-transform: uppercase;
+    color: #bfb585;
+}
 
+a.read-more {
+    background-color: #605833;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    float: right;
+    font-family: Enriqueta, Arial, sans-serif;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding: 3px 10px;
+}
 
-h2 a:visited { color: #605833; font-family: Georgia, arial, serif; }
-
-
-h2 a:hover { color: #92864d; text-decoration: none; }
-
-
-p { color: #605833; font-family: Enriqueta; font-size: 16px; padding: 10px 0; }
-
-
-.post-info { border-top: 1px dashed #70673b; border-bottom: 1px dashed #70673b; font-size: 13px; margin: 15px 0 15px; padding: 3px; text-transform: uppercase; color: #bfb585; }
-
-a.read-more { background-color: #605833; border-radius: 5px 5px 5px 5px; color: white; float: right; font-family: Enriqueta,Arial,sans-serif; text-transform: uppercase; font-size: 16px; padding: 3px 10px; }
-
-
-a.read-more:hover { background-color: #92864d; border-radius: 5px 5px 5px 5px; text-decoration: none; }
+a.read-more:hover {
+    background-color: #92864d;
+    border-radius: 5px 5px 5px 5px;
+    text-decoration: none;
+}
 
 .article-image {
     width: 90%;
     height: 60%;
     margin-top: 20px;
     border-radius: 8px;
+}
+
+.closeButton {
+    cursor: pointer;
+    font-weight: bold;
 }

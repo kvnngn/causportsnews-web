@@ -84,11 +84,10 @@
                         <div class="card" *ngFor="let favorite of favorites">
                             <div>
                                 <div>
-                                    <b>{{favorite.article.title}}</b>
-                                    <button (click)="removeFromFavorites(favorite)" class="ui button red inverted">
-                                        Remove from favorite
-                                        <i class="fa fa-star"></i>
-                                    </button>
+                                    <span (click)="goToArticleDetails(favorite.article)">{{favorite.article.title}}</span>
+                                    <span (click)="removeFromFavorites(favorite)" class="closeButton">
+                                        x
+                                    </span>
                                 </div>
                             </div>
                         </div>

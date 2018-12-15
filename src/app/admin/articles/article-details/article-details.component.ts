@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService, UserService} from "../../../providers";
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AlertService} from "../../../providers/alert.service";
 
 declare var $: any;
@@ -26,6 +26,7 @@ export class ArticleDetailsComponent implements OnInit {
                 private _Activatedroute: ActivatedRoute,
                 private alertService: AlertService,
                 private authenticationService: AuthenticationService,
+                private router: Router,
                 private domSanitizer: DomSanitizer) {
         this.user = this.authenticationService.getUser();
         this.article_id = this._Activatedroute.snapshot.params.id;
@@ -115,5 +116,9 @@ export class ArticleDetailsComponent implements OnInit {
                 console.log(error)
             }
         );
+    }
+
+    goToArticleDetails(article) {
+        this.router.navigate(['/admin/article/details/' + article.id], article);
     }
 }
