@@ -3,6 +3,7 @@ import {UserService} from '../../../providers';
 import {AuthenticationService} from '../../../providers';
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AlertService} from "../../../providers/alert.service";
 
 @Component({
     selector: 'app-patients',
@@ -36,6 +37,7 @@ export class PanelAdminComponent {
                 private ngZone: NgZone,
                 private fb: FormBuilder,
                 private authenticationService: AuthenticationService,
+                private alertService: AlertService,
                 private router: Router) {
         this.user = this.authenticationService.getUser();
        this.createForm();
@@ -102,9 +104,11 @@ export class PanelAdminComponent {
         console.log(this.article)
             this.userService.createArticle(this.article).subscribe(
             article => {
+                this.alertService.showNotification('success', 'New article created!');
                 console.log(article)
             },
             error => {
+                this.alertService.showNotification('warning', 'Please check your connection..');
                 console.log(error)
             }
         );
@@ -116,9 +120,11 @@ export class PanelAdminComponent {
         console.log(this.result)
             this.userService.addResult(this.result).subscribe(
             article => {
+                this.alertService.showNotification('success', 'New result created!');
                 console.log(article)
             },
             error => {
+                this.alertService.showNotification('warning', 'Please check your connection..');
                 console.log(error)
             }
         );

@@ -7,7 +7,7 @@ import {AdminLayoutComponent} from './layouts/admin/admin-layout.component';
 export const AppRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'admin/home',
+        redirectTo: 'admin/home/all',
         pathMatch: 'full'
     },
     {

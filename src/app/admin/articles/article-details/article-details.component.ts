@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthenticationService, UserService} from "../../../providers";
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {ActivatedRoute} from "@angular/router";
+import {AlertService} from "../../../providers/alert.service";
 
 declare var $: any;
 
@@ -23,6 +24,7 @@ export class ArticleDetailsComponent implements OnInit {
 
     constructor(private userService: UserService,
                 private _Activatedroute: ActivatedRoute,
+                private alertService: AlertService,
                 private authenticationService: AuthenticationService) {
         this.user = this.authenticationService.getUser();
         this.article_id = this._Activatedroute.snapshot.params.id;
@@ -53,10 +55,13 @@ export class ArticleDetailsComponent implements OnInit {
         this.newComment.user_id = this.user.user.id;
         this.userService.addComment(this.newComment).subscribe(
             res => {
+                this.newComment = '';
+                this.alertService.showNotification('success', 'Comment successfully added.');
                 this.getArticle();
                 // console.log(this.articles);
             },
             error => {
+                this.alertService.showNotification('warning', 'Please check your connection..');
                 console.log(error)
             }
         );
@@ -87,9 +92,11 @@ export class ArticleDetailsComponent implements OnInit {
     addToFavorites(article) {
         this.userService.addToFavorites({user_id: this.user.user.id, article_id: article.id}).subscribe(
             res => {
+                this.alertService.showNotification('success', 'Article added to your favorite list');
                 this.getFavorites();
             },
             error => {
+                this.alertService.showNotification('warning', 'Please check your connection..');
                 console.log(error)
             }
         );
@@ -98,9 +105,11 @@ export class ArticleDetailsComponent implements OnInit {
     removeFromFavorites(article) {
         this.userService.removeFromFavorites(article.id).subscribe(
             res => {
+                this.alertService.showNotification('warning', 'Article deleted from your favorite list');
                 this.getFavorites();
             },
             error => {
+                this.alertService.showNotification('warning', 'Please check your connection..');
                 console.log(error)
             }
         );

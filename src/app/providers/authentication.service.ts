@@ -12,8 +12,8 @@ export class AuthenticationService {
     constructor(private api: ApiService, private router: Router) {
     }
 
-    login(pro) {
-        return this.api.post('/pro/auth/login/', pro)
+    login(user) {
+        return this.api.post('/user/auth/login/', user)
             .map(
                 user => {
                     if (user && user['token']) {
@@ -28,7 +28,7 @@ export class AuthenticationService {
     }
 
     signup(user: User) {
-        return this.api.post('/pro/auth/register', user).map((response: Response) => {
+        return this.api.post('/user/auth/register', user).map((response: Response) => {
             const newUser = response;
             if (newUser && newUser['token']) {
                 localStorage.setItem('token', newUser['token']);

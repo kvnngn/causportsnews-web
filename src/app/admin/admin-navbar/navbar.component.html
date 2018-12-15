@@ -4,7 +4,8 @@
         <div class="navbar-nav">
             <li class="divider" *ngIf="isNotMobileMenu()"></li>
             <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}">
-                <a class="nav-item nav-link" [routerLink]="[menuItem.path]" [hidden]="menuItem.type == 'Admin' && user.user.type == 'User'">
+                <a class="nav-item nav-link" [routerLink]="[menuItem.path]"
+                   [hidden]="menuItem.type == 'Admin' && user.user.type == 'User'">
                     <i class="{{menuItem.icon}}"></i>
                     {{menuItem.title}}
                 </a>
@@ -22,6 +23,10 @@
             <a class="nav-item nav-link" href="/auth/login" title="Log in" *ngIf="!user">
                 <i class="fa fa-sign-in"></i>
                 Log in
+            </a>
+            <a class="nav-item nav-link" href="/auth/register" title="Sign up" *ngIf="!user">
+                <i class="fas fa-user-plus"></i>
+                Create an account
             </a>
         </div>
     </div>

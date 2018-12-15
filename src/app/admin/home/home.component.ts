@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthenticationService, UserService} from "../../providers";
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {Router} from "@angular/router";
+import {AlertService} from "../../providers/alert.service";
 
 declare var $: any;
 
@@ -23,7 +24,8 @@ export class HomeComponent implements OnInit {
 
     constructor(private userService: UserService,
                 private router: Router,
-                private authenticationService: AuthenticationService) {
+                private authenticationService: AuthenticationService,
+                private alertService: AlertService) {
         this.user = this.authenticationService.getUser();
         this.currentUrl = this.router.url;
         this.getArticles();
@@ -108,9 +110,11 @@ export class HomeComponent implements OnInit {
     addToFavorites(article) {
         this.userService.addToFavorites({user_id: this.user.user.id, article_id: article.id}).subscribe(
             res => {
+                this.alertService.showNotification('success', 'Article added to your favorite list');
                 this.getFavorites();
             },
             error => {
+                this.alertService.showNotification('warning', 'Please check your connection.');
                 console.log(error)
             }
         );
@@ -119,9 +123,11 @@ export class HomeComponent implements OnInit {
     removeFromFavorites(article) {
         this.userService.removeFromFavorites(article.id).subscribe(
             res => {
+                this.alertService.showNotification('success', 'Article deleted from your favorite list');
                 this.getFavorites();
             },
             error => {
+                this.alertService.showNotification('warning', 'Please check your connection.');
                 console.log(error)
             }
         );
