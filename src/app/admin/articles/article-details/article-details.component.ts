@@ -28,7 +28,6 @@ export class ArticleDetailsComponent implements OnInit {
                 private authenticationService: AuthenticationService) {
         this.user = this.authenticationService.getUser();
         this.article_id = this._Activatedroute.snapshot.params.id;
-        console.log(this.user);
         this.getArticle()
         this.getResults();
         if (this.user) {this.getFavorites();}

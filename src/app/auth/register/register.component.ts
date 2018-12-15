@@ -27,6 +27,7 @@ export class RegisterComponent {
             lastname: [null, Validators.required],
             email: [null, [Validators.required, Validators.email]],
             password: [null, Validators.required],
+            type: [null, Validators.required],
         });
     }
 
@@ -38,6 +39,8 @@ export class RegisterComponent {
 
     get password() { return this.RegisterForm.get('password'); }
 
+    get type() { return this.RegisterForm.get('type'); }
+
     register(formValues: any) {
         this.loaderState++;
         return this.authenticationService.signup(formValues)
@@ -46,7 +49,6 @@ export class RegisterComponent {
             () => {this.router.navigate(['/admin/home/all'])},
             (err) => {
                 console.log(err.error.error);
-                let msg = '';
                 if (err.error.error === 'Email already used') {
                     this.alertService.showNotification('warning', 'Email already used by other user..')
                 }

@@ -44,6 +44,6 @@ export class UserService {
     }
 
     getArticleById(id) {
-        return this.api.get('/article/id/1');
+        return this.api.get('/article/id/' + id);
     }
 }
