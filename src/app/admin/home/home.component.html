@@ -22,9 +22,10 @@
             <div class="col-6">
                 <div class="card">
                     <div class="content">
-                        <div class="header text-center">
+                        <div class="header text-center" *ngIf="articles.length > 0">
                             <div class="cardNews" *ngFor="let article of articles">
-                                <button [hidden]="isFromFavorites(article.id)" (click)="addToFavorites(article)" class="ui button green inverted">
+                                <button [hidden]="isFromFavorites(article.id)" (click)="addToFavorites(article)"
+                                        class="ui button green inverted">
                                     Add to favorite
                                     <i class="fa fa-star"></i>
                                 </button>
@@ -45,28 +46,41 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="header text-center" *ngIf="articles.length == 0">
+                            No article existing for the moment..
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-3">
                 <div class="card">
-                    <div class="content">
+                    <div class="content" *ngIf="favorites.length > 0">
                         <p>Favorites</p>
                         <div class="card" *ngFor="let favorite of favorites">
                             <div>
-
-                            <div>
-                                <b>{{favorite.article.title}}</b>
-                                <button (click)="removeFromFavorites(favorite)" class="ui button red inverted">
-                                    Remove from favorite
-                                    <i class="fa fa-star"></i>
-                                </button>
+                                <div>
+                                    <b>{{favorite.article.title}}</b>
+                                    <button (click)="removeFromFavorites(favorite)" class="ui button red inverted">
+                                        Remove from favorite
+                                        <i class="fa fa-star"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-
+                    </div>
+                    <div class="content" *ngIf="favorites.length == 0 && user">
+                        <p>Favorites</p>
+                        <div class="content">
+                            No favorite article added.
+                        </div>
+                    </div>
+                    <div class="content" *ngIf="!user">
+                        <p>Favorites</p>
+                        <div class="content">
+                            In order to create your favorite article list, please log in <a href="/auth/login"> here ..</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

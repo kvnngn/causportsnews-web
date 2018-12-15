@@ -1,10 +1,10 @@
 <nav class="navbar navbar-dark bg-secondary mb-5">
-    <a class="navbar-brand" href="/">Cau Sports News</a>
+    <a class="navbar-brand" href="/admin/home/all">Cau Sports News</a>
     <div class="navbar-expand mr-auto">
         <div class="navbar-nav">
             <li class="divider" *ngIf="isNotMobileMenu()"></li>
             <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}">
-                <a class="nav-item nav-link" [routerLink]="[menuItem.path]">
+                <a class="nav-item nav-link" [routerLink]="[menuItem.path]" [hidden]="menuItem.type == 'Admin' && user.user.type == 'User'">
                     <i class="{{menuItem.icon}}"></i>
                     {{menuItem.title}}
                 </a>
@@ -13,8 +13,13 @@
     </div>
     <div class="navbar-expand ml-auto navbar-nav">
         <div class="nav-item nav-link" class="navbar-nav">
-            <a class="nav-item nav-link" href="/auth/login" (click)="logout()" title="Log out">
+            <a class="nav-item nav-link" href="/auth/login" (click)="logout()" title="Log out" *ngIf="user">
                 <i class="fa fa-sign-out"></i>
+            </a>
+        </div>
+        <div class="nav-item nav-link" class="navbar-nav">
+            <a class="nav-item nav-link" href="/auth/login" title="Log in" *ngIf="!user">
+                <i class="fa fa-sign-in"></i>
             </a>
         </div>
     </div>

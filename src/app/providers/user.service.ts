@@ -31,6 +31,10 @@ export class UserService {
         return this.api.get('/articles');
     }
 
+    getArticlesByCategorie(categorie) {
+        return this.api.get('/articles/categorie/' + categorie);
+    }
+
     getUserFavorites(id) {
         return this.api.get('/favorites/id/' + id);
     }

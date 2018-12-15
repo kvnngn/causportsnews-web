@@ -85,11 +85,8 @@ export class AuthenticationService {
     }
 
     getHomeURL() {
-        if (!this.isLoggedIn()) {
-            return '/auth/login';
-        }
-        else if (this.currentUser) {
-            return '/admin/home';
+       if (this.currentUser) {
+            return '/admin/home/all';
         }
         else {
             return '/auth/login';

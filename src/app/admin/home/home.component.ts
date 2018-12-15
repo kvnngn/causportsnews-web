@@ -18,22 +18,62 @@ export class HomeComponent implements OnInit {
     results: any = [];
     favorites: any = [];
     user: any;
+    currentUrl = '';
+    splitUrl = [];
 
     constructor(private userService: UserService,
                 private router: Router,
                 private authenticationService: AuthenticationService) {
         this.user = this.authenticationService.getUser();
-        console.log(this.user);
+        this.currentUrl = this.router.url;
         this.getArticles();
         this.getResults();
-        this.getFavorites();
+        if (this.user) {this.getFavorites();}
     }
 
     ngOnInit() {
     };
 
-    getArticles() {
+
+    getAllArticles() {
         this.userService.getArticles().subscribe(
+            articles => {
+                this.articles = articles;
+            },
+            error => {
+                console.log(error)
+            }
+        );
+    }
+
+    getArticles() {
+        if (this.currentUrl == '/admin/home/all') {
+            this.getAllArticles()
+        }
+        else {
+            this.getArticlesByCategorie()
+        }
+    }
+
+    getArticlesByCategorie() {
+        let categorie;
+        this.splitUrl = this.currentUrl.split('/');
+        if (this.splitUrl[this.splitUrl.length - 1] == 'football') {
+            categorie = 'Football'
+        }
+        if (this.splitUrl[this.splitUrl.length - 1] == 'americanfootball') {
+            categorie = 'American football'
+        }
+        if (this.splitUrl[this.splitUrl.length - 1] == 'basketball') {
+            categorie = 'Basket-ball'
+        }
+        if (this.splitUrl[this.splitUrl.length - 1] == 'taekwondo') {
+            categorie = 'Taekwondo'
+        }
+        if (this.splitUrl[this.splitUrl.length - 1] == 'tennistable') {
+            categorie = 'Tennis table'
+        }
+        this.userService.getArticlesByCategorie(categorie).subscribe(
             articles => {
                 this.articles = articles;
             },
@@ -91,10 +131,5 @@ export class HomeComponent implements OnInit {
         this.router.navigate(['/admin/article/details/' + article.id], article);
     }
 
-    isFromFavorites(article_id) {
-        console.log(article_id)
-        this.favorites.forEach((favorite) => {
-           console.log(favorite.article_id)
-       })
-    }
+    isFromFavorites(article_id) {}
 }
