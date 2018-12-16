@@ -556,7 +556,7 @@ hr {
   position: relative;
   z-index: 2;
   float: right;
-  width: calc(100% - 260px);
+  width: 100%;
   min-height: 100%;
 }
 .main-panel > .content {

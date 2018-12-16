@@ -78,7 +78,7 @@
                     <div class="content" *ngIf="!user">
                         <p>Favorites</p>
                         <div class="content">
-                            In order to create your favorite article list, please log in <a href="/auth/login"> here ..</a>
+                            In order to create your favorite article list, please log in <a [routerLink]="['/auth/login']"> here ..</a>
                         </div>
                     </div>
                 </div>

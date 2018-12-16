@@ -14,18 +14,18 @@
     </div>
     <div class="navbar-expand ml-auto navbar-nav">
         <div class="nav-item nav-link" class="navbar-nav">
-            <a class="nav-item nav-link" href="/auth/login" (click)="logout()" title="Log out" *ngIf="user">
+            <a class="nav-item nav-link" [routerLink]="['/auth/login']" (click)="logout()" title="Log out" *ngIf="user">
                 <i class="fa fa-sign-out"></i>
                 Log out
             </a>
         </div>
         <div class="nav-item nav-link" class="navbar-nav">
-            <a class="nav-item nav-link" href="/auth/login" title="Log in" *ngIf="!user">
+            <a class="nav-item nav-link" (click)="goToLogin()" title="Log in" *ngIf="!user">
                 <i class="fa fa-sign-in"></i>
                 Log in
             </a>
-            <a class="nav-item nav-link" href="/auth/register" title="Sign up" *ngIf="!user">
-                <i class="fas fa-user-plus"></i>
+            <a class="nav-item nav-link" (click)="goToRegister()" title="Sign up" *ngIf="!user">
+                <i class="fa fa-user"></i>
                 Create an account
             </a>
         </div>

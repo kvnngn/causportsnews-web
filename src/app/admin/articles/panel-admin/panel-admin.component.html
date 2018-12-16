@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="field">
                                     <label class="block-label">Image : </label>
-                                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                                    <form [formGroup]="form" >
                                         <div class="form-group">
                                             <input type="file" id="avatar" (change)="onFileChange($event)" #fileInput>
                                         </div>
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="field">
                                     <label class="block-label">Logo Team 1 : </label>
-                                    <form [formGroup]="form2" (ngSubmit)="onSubmit()">
+                                    <form [formGroup]="form2" >
                                         <div class="form-group">
                                             <input type="file" id="team1" (change)="onFileChange1($event)" #fileInput>
                                         </div>
@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="field">
                                     <label class="block-label">Logo Team 2 : </label>
-                                    <form [formGroup]="form2" (ngSubmit)="onSubmit()">
+                                    <form [formGroup]="form2" >
                                         <div class="form-group">
                                             <input type="file" id="team2" (change)="onFileChange2($event)" #fileInput>
                                         </div>

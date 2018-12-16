@@ -30,7 +30,7 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
     imports: [
         BrowserModule,
         HttpClientModule,
-        RouterModule.forRoot(AppRoutes),
+        RouterModule.forRoot(AppRoutes, {useHash: true}),
         NavbarModule,
         FooterModule,
         ReactiveFormsModule,

@@ -1,6 +1,7 @@
 import {Component, OnInit, Renderer, ViewChild, ElementRef} from '@angular/core';
 import {AuthenticationService} from '../../providers';
 import {Location} from '@angular/common';
+import {Router} from "@angular/router";
 
 declare var $: any;
 
@@ -56,6 +57,7 @@ export class NavbarComponent implements OnInit {
     constructor(location: Location,
                 private renderer: Renderer,
                 private element: ElementRef,
+                private router: Router,
                 private authenticationService: AuthenticationService) {
         this.location = location;
         this.nativeElement = element.nativeElement;
@@ -79,5 +81,13 @@ export class NavbarComponent implements OnInit {
 
     logout() {
         return this.authenticationService.logout();
+    }
+
+    goToLogin(){
+        return this.router.navigate(['/auth/login']);
+    }
+
+    goToRegister(){
+        return this.router.navigate(['/auth/register']);
     }
 }
