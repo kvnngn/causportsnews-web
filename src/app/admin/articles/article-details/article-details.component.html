@@ -50,11 +50,11 @@
                 <div class="card">
                     <div class="content" *ngIf="user">
                         <div class="header text-center">
-                            <h4>Comments</h4>
+                            <h1>Comments</h1>
                             <div class="content">
                                 <label> Add new comment : </label>
-                                <input type="text" [(ngModel)]="newComment.content">
-                                <button (click)="addComment()">Add</button>
+                                <textarea class="form-control" [(ngModel)]="newComment.content"></textarea>
+                                <button class="addComment" (click)="addComment()">Add</button>
                             </div>
                         </div>
                     </div>
@@ -65,11 +65,11 @@
                     </div>
                     <div class="content" *ngIf="article && user">
                         <div class="header text-center">
-                            <div class="card" *ngFor="let comment of article.comments">
+                            <div class="cardNews" *ngFor="let comment of article.comments">
                                 <div class="content">
-                                    <p>{{comment.content}}</p>
-                                    <p>{{comment.user.firstname + ' ' + comment.user.lastname}}</p>
-                                    <p>{{comment.creation_date | date: 'yyyy/MM/dd'}}</p>
+                                    <p class="text-left post-info">{{comment.user.firstname + ' ' + comment.user.lastname}}</p>
+                                    <p class="">{{comment.content}}</p>
+                                    <p class="text-right">{{comment.creation_date | date: 'yyyy/MM/dd'}}</p>
                                 </div>
                             </div>
                         </div>
@@ -81,13 +81,11 @@
                 <div class="card">
                     <div class="content" *ngIf="favorites.length > 0">
                         <p>Favorites</p>
-                        <div class="card" *ngFor="let favorite of favorites">
+                        <div class="cardNews" *ngFor="let favorite of favorites">
                             <div>
                                 <div>
-                                    <span (click)="goToArticleDetails(favorite.article)">{{favorite.article.title}}</span>
-                                    <span (click)="removeFromFavorites(favorite)" class="closeButton">
-                                        x
-                                    </span>
+                                    <span class="font-italic" (click)="goToArticleDetails(favorite.article)">{{favorite.article.title}}</span>
+                                    <span (click)="removeFromFavorites(favorite)" class="closeButton">&nbsp;X&nbsp;</span>
                                 </div>
                             </div>
                         </div>

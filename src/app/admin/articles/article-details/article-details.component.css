@@ -39,6 +39,8 @@ h1 {
     text-align: center;
 }
 
+h1 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 100px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
+
 h2,
 h2 a,
 h2 a:visited {
@@ -101,4 +103,22 @@ a.read-more:hover {
 .closeButton {
     cursor: pointer;
     font-weight: bold;
+    float: right;
+    background: red;
+}
+
+.addComment {
+    background-color: #605833;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    float: right;
+    font-family: Enriqueta, Arial, sans-serif;
+    font-size: 16px;
+    padding: 3px 10px;
+}
+
+.cardNews {
+    background: #f3f0de;
+    border: 2px solid black;
+    margin-bottom: 20px;
 }

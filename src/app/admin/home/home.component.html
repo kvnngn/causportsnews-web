@@ -58,14 +58,12 @@
                 <div class="card">
                     <div class="content" *ngIf="favorites.length > 0">
                         <p>Favorites</p>
-                        <div class="card" *ngFor="let favorite of favorites">
+                        <div class="cardNews" *ngFor="let favorite of favorites">
                             <div>
                                 <div>
                                     <div>
                                         <span (click)="goToArticleDetails(favorite.article)">{{favorite.article.title}}</span>
-                                        <span (click)="removeFromFavorites(favorite)" class="closeButton">
-                                        x
-                                    </span>
+                                        <span (click)="removeFromFavorites(favorite)" class="closeButton">&nbsp;X&nbsp;</span>
                                     </div>
                                 </div>
                             </div>

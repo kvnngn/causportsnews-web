@@ -66,6 +66,7 @@ a.read-more:hover { background-color: #92864d; border-radius: 5px 5px 5px 5px; t
 .closeButton {
     cursor: pointer;
     font-weight: bold;
+    float: right;
+    background: red;
 }
-
 
