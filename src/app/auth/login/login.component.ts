@@ -37,10 +37,10 @@ export class LoginComponent implements OnInit {
                 error => {
                     console.log(error);
                     if (error.error.error === 'invalid password') {
-                        this.alertService.alert('warning', 'Le mot de passe est incorrect !');
+                        this.alertService.alert('warning', 'Incorrect password !');
                     }
-                    else if (error.error.error === 'pro not exist in DB') {
-                        this.alertService.alert('warning', 'Aucun utilisateur n\'existe avec cette adresse mail');
+                    else if (error.error.error === 'user not exist in DB') {
+                        this.alertService.alert('warning', 'No user is related to this mail');
                     }
                 }
             );
